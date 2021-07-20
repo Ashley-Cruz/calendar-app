@@ -1,6 +1,7 @@
-const {Schema, model} = require('mongoose');
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
-const EventoSchema = Schema({
+const EventoSchema = mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -17,7 +18,7 @@ const EventoSchema = Schema({
         required: true
     },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
         required: true
     }
@@ -29,4 +30,4 @@ EventoSchema.method('toJSON', function(){
     return object;
 })
 
-module.exports = model('Evento', EventoSchema);
+module.exports = mongoose.model('Evento', EventoSchema);

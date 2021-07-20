@@ -1,6 +1,7 @@
-const {Schema, model} = require('mongoose');
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
-const UsuarioSchema = Schema({
+const UsuarioSchema = mongoose.Schema({
     
     name:{
         type: String,
@@ -17,4 +18,4 @@ const UsuarioSchema = Schema({
     }
 });
 
-module.exports = model('Usuario', UsuarioSchema);
+module.exports = mongoose.model('Usuario', UsuarioSchema);
